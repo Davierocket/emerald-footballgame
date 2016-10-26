@@ -13,7 +13,6 @@ require "emerald"
 function love.load()
 	--stats
 	text = love.graphics.newFont(45)
-	aWinnerIsYou = false --flag for reaching ball limit
 	times = 0 --balls thrown
 	winplaycount = 0 --for audio. I'm getting loops when I play the win noise and I don't know why
 	tauntEm = "test"
@@ -25,7 +24,7 @@ function love.load()
 	bgm:setVolume(0.6)
 	punch:setVolume(0.3)
 	winNoise:setVolume(0.6)
-	winNoise:setLooping(false) --yet it still loops...
+	winNoise:setLooping(false)
 	
 	--Images
 	FootballButton = love.graphics.newImage("pics/button.png")
@@ -34,28 +33,15 @@ function love.load()
 	repeatButton = love.graphics.newImage("pics/repeatButton.png")
 	startButton = love.graphics.newImage("pics/startButton.png")
 	menubg = love.graphics.newImage("pics/menu.png")
+	bgm:play()
 end
 
 
 
 function love.update() --the comp part
 
---bgm:play() --I dunno if this should go elsewhere, but...
 --bro.broPic = bro.stillAnim --reset bro pic 
---stop count once goal is reached
-if bro.ballCount == 48 then 
-	aWinnerIsYou = true	
-	end
 
-if aWinnerIsYou == true then
-	bgm:pause()
-	if winplaycount < 2 then  --stop playing bg music and play win noise instead. Might be a roundabout way of doing this.
-		winNoise:play() --it's supposed to only play the tune once.
-		winplaycount = 1
-		end
-	end
-	
-	
 end
 
 function love.keypressed(key) 
