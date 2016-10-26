@@ -29,6 +29,10 @@ end
 function throwYerBall() 
 		bro.broPic = bro.throwAnim --this still doesn't want to update the picture for some reason
 		bro.ballCount = bro.ballCount + 1
+		if bro.ballCount == 48 then
+			winNoise:play()
+			bgm:stop()
+		end
 end
 
 function broDraw()
